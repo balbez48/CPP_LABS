@@ -1,4 +1,4 @@
-﻿
+
 #include <ctime>
 #include <cmath>
 #include <iostream>
@@ -48,138 +48,130 @@ bool isEqual(int a, int b, int c) {
 //1 задание 
 int abs(int x) {
   if (x > 0) {
-      return x;
+    return x;
   }
-  return -x;
+    return -x;
 }
 
 //3 задание
 bool is35(int x) {
-    if (x % 3 == 0 && x % 5 == 0) { return false; }
-    else if (x % 3 == 0 || x % 5 == 0) { return true; }
-    return false;
+  if (x % 3 == 0 && x % 5 == 0) { return false; }
+  else if (x % 3 == 0 || x % 5 == 0) { return true; }
+  return false;
 }
 
 //5 задание
 int max3(int x, int y, int z) {
-    int max_num;
-    if (x > y && x > z) {
-        max_num = x;
-    }
-    else if (y > x && y > z) {
-        max_num = y;
-    }
-    else { max_num = z; }
+  int max_num;
+  if (x > y && x > z) {
+    max_num = x;
+  }
+  else if (y > x && y > z) {
+    max_num = y;
+  }
+  else { max_num = z; }
 
-    return max_num;
+  return max_num;
 }
 
 //7 задание 
 int sum2(int x, int y) {
   int sum = x + y;
   if (sum >= 10 && sum <= 20) {
-      return 20;
+    return 20;
   }
   return sum;
 }
 
 //9 задание 
 string day(int x) {
-    switch (x) {
-    case 1: {
-        return "Понедельник";
-    }
-    case 2: {
-        return "Вторник";
-    }
-    case 3: {
-        return "Среда";
-    }
-    case 4: {
-        return "Четверг";
-    }
-    case 5: {
-        return "Пятница";
-    }
-    case 6: {
-        return "Суббота";
-    }
-    case 7: {
-        return "Воскресенье";
-    }
-    default: {
-        return "Это не день недели";
-    }
-    }
+  switch (x) {
+  case 1: {
+    return "Понедельник";
+  }
+  case 2: {
+    return "Вторник";
+  }
+  case 3: {
+    return "Среда";
+  }
+  case 4: {
+    return "Четверг";
+  }
+  case 5: {
+     return "Пятница";
+  }
+  case 6: {
+    return "Суббота";
+  }
+  case 7: {
+    return "Воскресенье";
+  }
+  default: {
+    return "Это не день недели";
+  }
+  }
 }
 
 //1 задание 
 string listNums(int x) {
-
-    string str;
-    for (int i = 0; i <= x; i++) {
-        str += to_string(i) + " ";
-    }
-
-    return str;
+  string str;
+  for (int i = 0; i <= x; i++) {
+    str += to_string(i) + " ";
+  }
+  return str;
 }
 
 //3 задание
 string chet(int x) {
-
-    string str;
-    for (int i = 0; i <= x; i += 2) {
-        str += to_string(i) + " ";
-    }
-
-    return str;
+  string str;
+  for (int i = 0; i <= x; i += 2) {
+    str += to_string(i) + " ";
+  }
+  return str;
 }
 
 //5 задание
 int numLen(long x) {
-
-    int cnt = 0;
-    while (x > 0) {
-        x /= 10;
-        cnt++;
-    }
-
-    return cnt;
+  int cnt = 0;
+  while (x > 0) {
+    x /= 10;
+    cnt++;
+  }
+  return cnt;
 }
 
 //7 задание
 void square(int x) {
-
-    for (int i = 0; i < x; i++) {
-        string str = "";
-        for (int j = 0; j < x; j++) {
-            str += "* ";
-        }
-        cout << str << endl;
+ for (int i = 0; i < x; i++) {
+    string str = "";
+    for (int j = 0; j < x; j++) {
+      str += "* ";
     }
+    cout << str << endl;
+  }
 }
 
 //9 задание
 void rightTriangle(int x) {
-
-    int cnt = 0;
-    for (int i = 0; i < x; i++) {
-        cnt++;
-        string str = "";
-        for (int i = 0; i < x-cnt; i++) {
-            str += "  ";
-        }
-        for (int j = 0; j < cnt; j++) {
-            str += "* ";
-        }
-        cout << str << endl;
+  int cnt = 0;
+  for (int i = 0; i < x; i++) {
+    cnt++;
+    string str = "";
+    for (int i = 0; i < x - cnt; i++) {
+        str += "  ";
     }
+    for (int j = 0; j < cnt; j++) {
+        str += "* ";
+    }
+    cout << str << endl;
+  }
 }
 
 //1 задание 
 int findFirst(int arr[], int x) {
-  for (int i = 0; i < 10; i++) {
-      if (arr[i] == x) { return i; }
+  for (int i = 0; i < 16; i++) {
+    if (arr[i] == x) { return i; }
   }
 
   return -1;
@@ -187,46 +179,41 @@ int findFirst(int arr[], int x) {
 
 //3 задание 
 void maxAbs(int arr[], int sizeArr) {
+  int max_abs = abs(arr[0]);
+  int max_elem = arr[0];
 
-    int max_abs = abs(arr[0]);  
-    int max_elem = arr[0];   
+  for (int i = 1; i < sizeArr; i++) {
+    int cur_abs = abs(arr[i]);
 
-    for (int i = 1; i < sizeArr; i++) {
-        int cur_abs = abs(arr[i]);
-
-        if (cur_abs > max_abs) {
-            max_abs = cur_abs;
-            max_elem = arr[i];
-        }
+    if (cur_abs > max_abs) {
+      max_abs = cur_abs;
+      max_elem = arr[i];
     }
-
-    cout << max_elem << " - maxAbs" << endl;
+  }
+  cout << max_elem << " - maxAbs" << endl;
 }
 
 
 float proverkaFloat(float x) {
-    
-    bool flag = 1;
-    while (flag) {
-        cin >> x;
-        if (x < 0) {
-            cout << "Попробуйте снова - ";
-        }
-        else { flag = 0; }
+  bool flag = 1;
+  while (flag) {
+    cin >> x;
+    if (x < 0) {
+       cout << "Попробуйте снова - ";
     }
-
+    else { flag = 0; }
+    }
     return x;
 }
 
 int proverkaInt(int x) {
-
-    bool flag = 1;
-    while (flag) {
-        cin >> x;
-        if (x < 0) {
-            cout << "Попробуйте снова - ";
-        }
-        else { flag = 0; }
+  bool flag = 1;
+  while (flag) {
+    cin >> x;
+    if (x < 0) {
+       cout << "Попробуйте снова - ";
+    }
+    else { flag = 0; }
     }
 
     return x;
@@ -459,7 +446,7 @@ int main() {
             cout << "Введите неотрицательное число: ";
             num = proverkaInt(num);
             cout << "Результат - " << findFirst(array, num) << endl;
-            
+
 
         }; break;
         case 17: {
@@ -479,14 +466,15 @@ int main() {
 
         }; break;
 
+        default: "Такого задания нет";
+
         }
 
 
-        
-    }
-    
-}
 
+    }
+
+}
 
 
 
