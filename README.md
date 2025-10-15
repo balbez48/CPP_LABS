@@ -32,10 +32,6 @@ main организовать вызов всех функций с дружес
 
 ### Тестирование:
 
-
 ---
 
-### Тестирование:
-<img width="1430" height="252" alt="image" src="https://github.com/user-attachments/assets/53bf7740-1506-4ab4-94df-01638bf250c6" />
 
----
