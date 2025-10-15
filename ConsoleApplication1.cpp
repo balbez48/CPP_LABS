@@ -1,4 +1,3 @@
-
 #include <ctime>
 #include <cmath>
 #include <iostream>
@@ -12,7 +11,7 @@ double Fraction(double x) {
 
 //3 заданиеa
 int CharToNum(char x) {
-  return (int(x) - 48);
+  return (int(x) - int('0'));
 }
 
 //5 задание
@@ -42,7 +41,7 @@ int Abs(int x) {
   if (x > 0) {
     return x;
   }
-    return -x;
+  return -x;
 }
 
 //3 задание
@@ -133,11 +132,13 @@ int NumLen(long x) {
 
 //7 задание
 void Square(int x) {
- for (int i = 0; i < x; i++) {
-     std::string str = "";
-    for (int j = 0; j < x; j++) {
-      str += "* ";
-    }
+  std::string str = "";
+  for (int i = 0; i < x; i++) {
+    if (str == "") {
+      for (int j = 0; j < x; j++) {
+        str += "* ";
+      }
+    } 
     std::cout << str << std::endl;
   }
 }
@@ -148,7 +149,6 @@ void RightTriangle(int x) {
   std::string str = "";
   for (int i = 0; i < x; i++) {
     cnt++;
-    
     for (int i = 0; i < x - cnt; i++) {
         str += "  ";
     }
@@ -189,7 +189,7 @@ void MaxAbs(int arr[], int sizeArr) {
 }
 
 
-float proverkaFloat(float x) {
+float CheckFloat(float x) {
   bool flag = 1;
   while (flag) {
     std::cin >> x;
@@ -202,7 +202,7 @@ float proverkaFloat(float x) {
   return x;
 }
 
-int proverkaInt(int x) {
+int CheckInt(int x) {
   bool flag = 1;
   while (flag) {
     std::cin >> x;
@@ -217,260 +217,246 @@ int proverkaInt(int x) {
 }
 
 int main() {
-    setlocale(LC_ALL, "Rus");
-    srand(time(0));
+  setlocale(LC_ALL, "Rus");
+  srand(time(0));
 
-    int flag = 1;
-    int numTask = 0;
-    std::cout << "Нечетные варианты заданий" << std::endl;
-    std::cout << "Первый блок заданий - 1, 2, 3, 4, 5" << std::endl;
-    std::cout << "Второй блок заданий - 6, 7, 8, 9, 10" << std::endl;
-    std::cout << "Третий блок заданий - 11, 12, 13, 14, 15" << std::endl;
-    std::cout << "Четвертый блок заданий - 16, 17, 18, 19, 20" << std::endl;
+  int flag = 1;
+  int numTask = 0;
+  std::cout << "Нечетные варианты заданий" << std::endl;
+  std::cout << "Первый блок заданий - 1, 2, 3, 4, 5" << std::endl;
+  std::cout << "Второй блок заданий - 6, 7, 8, 9, 10" << std::endl;
+  std::cout << "Третий блок заданий - 11, 12, 13, 14, 15" << std::endl;
+  std::cout << "Четвертый блок заданий - 16, 17, 18, 19, 20" << std::endl;
 
-    while (flag) {
+  while (flag) {
         
-        std::cout << "\nЧтобы выйти укажите -1" << std::endl;
-        std::cout << "Введите номер задания - ";
-        std::cin >> numTask;
+    std::cout << "\nЧтобы выйти укажите -1" << std::endl;
+    std::cout << "Введите номер задания - ";
+    std::cin >> numTask;
+        
+    if (numTask == -1) { 
+      break; 
+    }
+
+    switch (numTask) {
+    case 1: {
+      double num = 0;
+      std::cout << "-----------------------------------------------------------" << std::endl;
+      std::cout << "Блок 1, Задание 1: Получить дробную часть от числа с точкой" << std::endl;
+      std::cout << "Введите число с точкой - ";
+
+      num = CheckFloat(num);
+      std::cout << "Результат - " << Fraction(num) << std::endl;
+
+    }; break;
+    case 2: {
+
+    char num = 0;
+    std::cout << "-----------------------------------------------------------" << std::endl;
+    std::cout << "Блок 1, Задание 3: Преобразовать один из символов 0 1 2 3 4 5 6 7 8 9 в число" << std::endl;
+    std::cout << "(char) '3' -> (int) 3" << std::endl;
+    std::cout << "Введите символ из следующего списка (0 1 2 3 4 5 6 7 8 9): ";
+    std::cin >> num;
+    std::cout << "Результат - " << CharToNum(num) << std::endl;
+
+    }; break;
+    case 3: {
+
+      int num = 0;
+      std::cout << "-----------------------------------------------------------" << std::endl;
+      std::cout << "Блок 1, Задание 5: Проверить является ли число двузначным" << std::endl;
+      std::cout << "Введите неотрицательное число: ";
+
+      num = CheckInt(num);
+      std::cout << "Результат - " << std::boolalpha << Is2Digits(num) << std::endl;
+
+    }; break;
+    case 4: {
+
+      int first_lim = 0, second_lim = 0, num = 0;
+      std::cout << "-----------------------------------------------------------" << std::endl;
+      std::cout << "Блок 1, Задание 7: Проверить входит ли указанное значение в диапазон" << std::endl;
+
+
+      std::cout << "Введите первую неотрицательную часть границы: ";
+      first_lim = CheckInt(first_lim);
+      std::cout << "Введите вторую неотрицательную часть границы: ";
+      second_lim = CheckInt(second_lim);
+      std::cout << "Введите неотрицательное число для проверки вхождения в диапазон: ";
+      num = CheckInt(num);
+      std::cout << "Результат - " << std::boolalpha << IsInRange(first_lim, second_lim, num) << std::endl;
+
+    }; break;
+    case 5: {
+
+      int first_num = 0, second_num = 0, third_num = 0;
+      std::cout << "-----------------------------------------------------------" << std::endl;
+      std::cout << "Блок 1, Задание 9: Проверить являются ли все три числа одинаковыми" << std::endl;
+
+
+      std::cout << "Введите первое неотрицательное число: ";
+      first_num = CheckInt(first_num);
+      std::cout << "Введите второе неотрицательное число: ";
+      second_num = CheckInt(second_num);
+      std::cout << "Введите третье неотрицательное число: ";
+      third_num = CheckInt(third_num);
+      std::cout << "Результат - " << std::boolalpha << IsEqual(first_num, second_num, third_num) << std::endl;
+
+    }; break;
+    case 6: {
+
+      int num = 0;
+      std::cout << "-----------------------------------------------------------" << std::endl;
+      std::cout << "Блок 2, Задание 1: Вернуть модуль числа" << std::endl;
+
+      std::cout << "Введите число: ";
+      std::cin >> num;
+      std::cout << "Результат - " << Abs(num) << std::endl;
+
+    }; break;
+    case 7: {
+
+      int num = 0;
+      std::cout << "-----------------------------------------------------------" << std::endl;
+      std::cout << "Блок 2, Задание 3: Проверить делится число на 3 или 5. Если число делится и на 3, и на 5, тогда вернуть false" << std::endl;
+
+      std::cout << "Введите неотрицательное число: ";
+      num = CheckInt(num);
+      std::cout << "Результат - " << std::boolalpha << Is35(num) << std::endl;
+
+    }; break;
+    case 8: {
+
+      int first_num = 0, second_num = 0, third_num = 0;
+      std::cout << "-----------------------------------------------------------" << std::endl;
+      std::cout << "Блок 2, Задание 5: Вернуть максимальное число из указанных трех" << std::endl;
+
+      std::cout << "Введите первое неотрицательное число: ";
+      first_num = CheckInt(first_num);
+      std::cout << "Введите второе неотрицательное число: ";
+      second_num = CheckInt(second_num);
+      std::cout << "Введите третье неотрицательное число: ";
+      third_num = CheckInt(third_num);
+      std::cout << "Результат - " << Max3(first_num, second_num, third_num) << std::endl;
 
-        if (numTask == -1) { 
-            break; 
-        }
+    }; break;
+    case 9: {
 
-        switch (numTask) {
-        case 1: {
+      int first_num = 0, second_num = 0;
+      std::cout << "-----------------------------------------------------------" << std::endl;
+      std::cout << "Блок 2, Задание 7: Вернуть сумму чисел. Если сумма входит в диапазон от 10 до 19, вернуть 20." << std::endl;
 
-            double num = 0;
-            std::cout << "-----------------------------------------------------------" << std::endl;
-            std::cout << "Блок 1, Задание 1: Получить дробную часть от числа с точкой" << std::endl;
-            std::cout << "Введите число с точкой - ";
+      std::cout << "Введите первое неотрицательное число: ";
+      first_num = CheckInt(first_num);
+      std::cout << "Введите второе неотрицательное число: ";
+      second_num = CheckInt(second_num);
+      std::cout << "Результат - " << Sum2(first_num, second_num) << std::endl;
+
+    }; break;
+    case 10: {
 
-            num = proverkaFloat(num);
-            std::cout << "Результат - " << Fraction(num) << std::endl;
-
-        }; break;
-        case 2: {
-
-            char num = 0;
-            std::cout << "-----------------------------------------------------------" << std::endl;
-            std::cout << "Блок 1, Задание 3: Преобразовать один из символов 0 1 2 3 4 5 6 7 8 9 в число" << std::endl;
-            std::cout << "(char) '3' -> (int) 3" << std::endl;
-            std::cout << "Введите символ из следующего списка (0 1 2 3 4 5 6 7 8 9): ";
-            std::cin >> num;
-            std::cout << "Результат - " << CharToNum(num) << std::endl;
-
-        }; break;
-        case 3: {
-
-            int num = 0;
-            std::cout << "-----------------------------------------------------------" << std::endl;
-            std::cout << "Блок 1, Задание 5: Проверить является ли число двузначным" << std::endl;
-            std::cout << "Введите неотрицательное число: ";
-
-            num = proverkaInt(num);
-            std::cout << "Результат - " << std::boolalpha << Is2Digits(num) << std::endl;
-
-        }; break;
-        case 4: {
-
-            int first_lim = 0, second_lim = 0, num = 0;
-            std::cout << "-----------------------------------------------------------" << std::endl;
-            std::cout << "Блок 1, Задание 7: Проверить входит ли указанное значение в диапазон" << std::endl;
-
-
-            std::cout << "Введите первую неотрицательную часть границы: ";
-            first_lim = proverkaInt(first_lim);
-            std::cout << "Введите вторую неотрицательную часть границы: ";
-            second_lim = proverkaInt(second_lim);
-            std::cout << "Введите неотрицательное число для проверки вхождения в диапазон: ";
-            num = proverkaInt(num);
-            std::cout << "Результат - " << std::boolalpha << IsInRange(first_lim, second_lim, num) << std::endl;
-
-        }; break;
-        case 5: {
-
-            int first_num = 0, second_num = 0, third_num = 0;
-            std::cout << "-----------------------------------------------------------" << std::endl;
-            std::cout << "Блок 1, Задание 9: Проверить являются ли все три числа одинаковыми" << std::endl;
-
-
-            std::cout << "Введите первое неотрицательное число: ";
-            first_num = proverkaInt(first_num);
-            std::cout << "Введите второе неотрицательное число: ";
-            second_num = proverkaInt(second_num);
-            std::cout << "Введите третье неотрицательное число: ";
-            third_num = proverkaInt(third_num);
-            std::cout << "Результат - " << std::boolalpha << IsEqual(first_num, second_num, third_num) << std::endl;
-
-        }; break;
-        case 6: {
-
-            int num = 0;
-            std::cout << "-----------------------------------------------------------" << std::endl;
-            std::cout << "Блок 2, Задание 1: Вернуть модуль числа" << std::endl;
-
-
-            std::cout << "Введите число: ";
-            std::cin >> num;
-            std::cout << "Результат - " << Abs(num) << std::endl;
-
-        }; break;
-        case 7: {
-
-            int num = 0;
-            std::cout << "-----------------------------------------------------------" << std::endl;
-            std::cout << "Блок 2, Задание 3: Проверить делится число на 3 или 5. Если число делится и на 3, и на 5, тогда вернуть false" << std::endl;
-
-
-            std::cout << "Введите неотрицательное число: ";
-            num = proverkaInt(num);
-            std::cout << "Результат - " << std::boolalpha << Is35(num) << std::endl;
-
-        }; break;
-        case 8: {
-
-            int first_num = 0, second_num = 0, third_num = 0;
-            std::cout << "-----------------------------------------------------------" << std::endl;
-            std::cout << "Блок 2, Задание 5: Вернуть максимальное число из указанных трех" << std::endl;
-
-
-            std::cout << "Введите первое неотрицательное число: ";
-            first_num = proverkaInt(first_num);
-            std::cout << "Введите второе неотрицательное число: ";
-            second_num = proverkaInt(second_num);
-            std::cout << "Введите третье неотрицательное число: ";
-            third_num = proverkaInt(third_num);
-            std::cout << "Результат - " << Max3(first_num, second_num, third_num) << std::endl;
-
-        }; break;
-        case 9: {
-
-            int first_num = 0, second_num = 0;
-            std::cout << "-----------------------------------------------------------" << std::endl;
-            std::cout << "Блок 2, Задание 7: Вернуть сумму чисел. Если сумма входит в диапазон от 10 до 19, вернуть 20." << std::endl;
-
-
-            std::cout << "Введите первое неотрицательное число: ";
-            first_num = proverkaInt(first_num);
-            std::cout << "Введите второе неотрицательное число: ";
-            second_num = proverkaInt(second_num);
-            std::cout << "Результат - " << Sum2(first_num, second_num) << std::endl;
-
-        }; break;
-        case 10: {
-
-            int num = 0;
-            std::cout << "-----------------------------------------------------------" << std::endl;
-            std::cout << "Блок 2, Задание 9: Вернуть дни недели в соответсвии их номеру(Понедельник - 1, Пятница - 5)" << std::endl;
-
-
-            std::cout << "Введите неотрицательное число: ";
-            num = proverkaInt(num);
-            std::cout << "Результат - " << Day(num) << std::endl;
-
-        }; break;
-        case 11: {
-
-            int num = 0;
-            std::cout << "-----------------------------------------------------------" << std::endl;
-            std::cout << "Блок 3, Задание 1: Вернуть строку от 0 до x" << std::endl;
-
-
-            std::cout << "Введите неотрицательное число: ";
-            num = proverkaInt(num);
-            std::cout << "Результат - " << ListNums(num) << std::endl;
-
-        }; break;
-        case 12: {
-
-            int num = 0;
-            std::cout << "-----------------------------------------------------------" << std::endl;
-            std::cout << "Блок 3, Задание 3: Вернуть строку с четными числами от 0 до x" << std::endl;
-
-
-            std::cout << "Введите неотрицательное число: ";
-            num = proverkaInt(num);
-            std::cout << "Результат - " << Chet(num) << std::endl;
-
-        }; break;
-        case 13: {
-
-            int num = 0;
-            std::cout << "-----------------------------------------------------------" << std::endl;
-            std::cout << "Блок 3, Задание 5: Вернуть длину числа" << std::endl;
-
-
-            std::cout << "Введите неотрицательное число: ";
-            num = proverkaInt(num);
-            std::cout << "Результат - " << NumLen(num) << std::endl;
-
-        }; break;
-        case 14: {
-
-            int num = 0;
-            std::cout << "-----------------------------------------------------------" << std::endl;
-            std::cout << "Блок 3, Задание 7: Вывести квадрат из зведочек размерностью x" << std::endl;
-
-
-            std::cout << "Введите неотрицательное число: ";
-            num = proverkaInt(num);
-            Square(num);
-
-        }; break;
-        case 15: {
-
-            int num = 0;
-            std::cout << "-----------------------------------------------------------" << std::endl;
-            std::cout << "Блок 3, Задание 9: Вывести треугольник размерностью x и выровнять по правой стороне" << std::endl;
-
-
-            std::cout << "Введите неотрицательное число: ";
-            num = proverkaInt(num);
-            RightTriangle(num);
-
-        }; break;
-        case 16: {
-
-            int num = 0;
-            int array[16]{ 1,1,1,2,3,4,4,4,5,34,1,5,14,6,90 };
-            std::cout << "-----------------------------------------------------------" << std::endl;
-            std::cout << "Блок 4, Задание 1: Вернуть индекс первого вхождения числа x в массиве" << std::endl;
-
-            std::string str = "";
-            for (int i = 0; i < 16; i++) {
-                str += std::to_string(array[i]) + " ";
-            }
-            std::cout << "Массив - " << str << std::endl;
-            std::cout << "Введите неотрицательное число: ";
-            num = proverkaInt(num);
-            std::cout << "Результат - " << FindFirst(array, num) << std::endl;
-
-
-        }; break;
-        case 17: {
-
-            int num = 0;
-            int array[16]{ 1,1,1,-32,3,4,40,4,5,-34,-1,5,-14,-6,90 };
-            std::cout << "-----------------------------------------------------------" << std::endl;
-            std::cout << "Блок 4, Задание 3: Найти максимальное значение по модулю числа x в массиве" << std::endl;
-
-            std::string str = "";
-            for (int i = 0; i < 16; i++) {
-                str += std::to_string(array[i]) + " ";
-            }
-            std::cout << "Массив - " << str << std::endl;
-            MaxAbs(array, 16);
-
-
-        }; break;
-
-        default: "Такого задания нет";
-
-        }
-
-
+      int num = 0;
+      std::cout << "-----------------------------------------------------------" << std::endl;
+      std::cout << "Блок 2, Задание 9: Вернуть дни недели в соответсвии их номеру(Понедельник - 1, Пятница - 5)" << std::endl;
+
+      std::cout << "Введите неотрицательное число: ";
+      num = CheckInt(num);
+      std::cout << "Результат - " << Day(num) << std::endl;
+
+    }; break;
+    case 11: {
+
+      int num = 0;
+      std::cout << "-----------------------------------------------------------" << std::endl;
+      std::cout << "Блок 3, Задание 1: Вернуть строку от 0 до x" << std::endl;
+
+      std::cout << "Введите неотрицательное число: ";
+      num = CheckInt(num);
+      std::cout << "Результат - " << ListNums(num) << std::endl;
+
+    }; break;
+    case 12: {
+
+      int num = 0;
+      std::cout << "-----------------------------------------------------------" << std::endl;
+      std::cout << "Блок 3, Задание 3: Вернуть строку с четными числами от 0 до x" << std::endl;
+
+      std::cout << "Введите неотрицательное число: ";
+      num = CheckInt(num);
+      std::cout << "Результат - " << Chet(num) << std::endl;
+
+    }; break;
+    case 13: {
+
+      int num = 0;
+      std::cout << "-----------------------------------------------------------" << std::endl;
+      std::cout << "Блок 3, Задание 5: Вернуть длину числа" << std::endl;
+
+      std::cout << "Введите неотрицательное число: ";
+      num = CheckInt(num);
+      std::cout << "Результат - " << NumLen(num) << std::endl;
+
+    }; break;
+    case 14: {
+
+      int num = 0;
+      std::cout << "-----------------------------------------------------------" << std::endl;
+      std::cout << "Блок 3, Задание 7: Вывести квадрат из зведочек размерностью x" << std::endl;
+
+      std::cout << "Введите неотрицательное число: ";
+      num = CheckInt(num);
+      Square(num);
+
+    }; break;
+    case 15: {
+
+      int num = 0;
+      std::cout << "-----------------------------------------------------------" << std::endl;
+      std::cout << "Блок 3, Задание 9: Вывести треугольник размерностью x и выровнять по правой стороне" << std::endl;
+
+      std::cout << "Введите неотрицательное число: ";
+      num = CheckInt(num);
+      RightTriangle(num);
+
+    }; break;
+    case 16: {
+
+      int num = 0;
+      int array[16]{ 1,1,1,2,3,4,4,4,5,34,1,5,14,6,90 };
+      std::cout << "-----------------------------------------------------------" << std::endl;
+      std::cout << "Блок 4, Задание 1: Вернуть индекс первого вхождения числа x в массиве" << std::endl;
+
+      std::string str = "";
+      for (int i = 0; i < 16; i++) {
+        str += std::to_string(array[i]) + "(" + std::to_string(i) + ") ";
+      }
+      std::cout << "Массив - " << str << std::endl;
+
+      std::cout << "Введите неотрицательное число: ";
+      num = CheckInt(num);
+      std::cout << "Результат - " << FindFirst(array, num) << std::endl;
+
+    }; break;
+    case 17: {
+
+      int num = 0;
+      int array[16]{ 1,1,1,-32,3,4,40,4,5,-34,-1,5,-14,-6,90 };
+      std::cout << "-----------------------------------------------------------" << std::endl;
+      std::cout << "Блок 4, Задание 3: Найти максимальное значение по модулю числа x в массиве" << std::endl;
+
+      std::string str = "";
+      for (int i = 0; i < 16; i++) {
+        str += std::to_string(array[i]) + " ";
+      }
+      std::cout << "Массив - " << str << std::endl;
+      MaxAbs(array, 16);
+
+    }; break;
+    
+
+    default: "Такого задания нет";
 
     }
+  }
 
 }
